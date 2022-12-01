@@ -4,6 +4,7 @@ import { GithubContext } from '../context/context';
 import { ExampleChart, Pie3D, Column3D, Bar3D, Doughnut2D } from './Charts';
 const Repos = () => {
   const { repos } = React.useContext(GithubContext);
+  console.log('🚀 ~ file: Repos.js ~ line 7 ~ Repos ~ repos', repos);
 
   let languages = repos.reduce((total, item) => {
     const { language, stargazers_count } = item;
@@ -26,7 +27,6 @@ const Repos = () => {
       return b.value - a.value;
     })
     .slice(0, 5);
-  // console.log(mostUsed);
 
   const mostPopular = Object.values(languages)
     .sort((a, b) => {
@@ -35,6 +35,7 @@ const Repos = () => {
     .map((item) => {
       return { ...item, value: item.stars };
     });
+  console.log(mostPopular);
 
   // starts, forks
   let { stars, forks } = repos.reduce(
